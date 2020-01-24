@@ -1,0 +1,92 @@
+﻿<UserControl x:Class="CAGD.TriangularBezierSurface"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:controls3D="clr-namespace:CAGD.Controls.Controls3D"
+             xmlns:CAGD="clr-namespace:CAGD"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="600">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden">
+            <Grid Margin="15 15 15 10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <TextBlock FontWeight="Bold" FontSize="15" HorizontalAlignment="Center">Triangular bezier surface</TextBlock>
+                <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Vertical" Margin="5 0" HorizontalAlignment="Center">
+                        <TextBlock Margin="0 5" FontSize="13">Movement directions</TextBlock>
+                        <StackPanel Orientation="Horizontal" Margin="5 0">
+                            <CheckBox IsChecked="{Binding CanMoveOnXAxis, Mode=TwoWay}" />
+                            <TextBlock Margin="5 0 0 0">Direction X</TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="5 0">
+                            <CheckBox IsChecked="{Binding CanMoveOnYAxis, Mode=TwoWay}" />
+                            <TextBlock Margin="5 0 0 0">Direction Y</TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="5 0">
+                            <CheckBox IsChecked="{Binding CanMoveOnZAxis, Mode=TwoWay}" />
+                            <TextBlock Margin="5 0 0 0">Direction Z</TextBlock>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical" Margin="5 0" HorizontalAlignment="Center">
+                        <TextBlock Margin="0 5" FontSize="13">Geometries to show</TextBlock>
+                        <StackPanel Orientation="Horizontal" Margin="5 0">
+                            <CheckBox IsChecked="{Binding ShowControlPoints, Mode=TwoWay}" />
+                            <TextBlock Margin="5 0 0 0">Control points</TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="5 0">
+                            <CheckBox IsChecked="{Binding ShowControlLines, Mode=TwoWay}" />
+                            <TextBlock Margin="5 0 0 0">Control lines</TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="5 0">
+                            <CheckBox IsChecked="{Binding ShowSurfaceLines, Mode=TwoWay}" />
+                            <TextBlock Margin="5 0 0 0">Surface lines</TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="5 0">
+                            <CheckBox IsChecked="{Binding ShowSurfaceGeometry, Mode=TwoWay}" />
+                            <TextBlock Margin="5 0 0 0">Surface geometry</TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="5 0" IsEnabled="{Binding ShowSurfaceGeometry}">
+                          <CheckBox IsChecked="{Binding ShowSmoothSurfaceGeometry, Mode=TwoWay}" />
+                          <TextBlock Margin="5 0 0 0">Smooth surface</TextBlock>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical" Margin="5 0" HorizontalAlignment="Center">
+                        <TextBlock Margin="0 5" FontSize="13">Surface degree</TextBlock>
+                        <StackPanel Orientation="Horizontal" Margin="5 0">
+                            <Border BorderThickness="0.5" SnapsToDevicePixels="True" BorderBrush="Black" Margin="0">
+                                <TextBlock Margin="4 0" Width="15" Text="{Binding SurfaceDegree}" />
+                            </Border>
+                            <Slider Value="{Binding SurfaceDegree, Mode=TwoWay}" Minimum="1" Maximum="6" TickFrequency="1" IsSnapToTickEnabled="True" Width="100" />
+                        </StackPanel>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical" Margin="5 0" HorizontalAlignment="Center">
+                        <TextBlock Margin="0 5" FontSize="13">Surface devisions</TextBlock>
+                        <StackPanel Orientation="Horizontal" Margin="5 0">
+                            <Border BorderThickness="0.5" SnapsToDevicePixels="True" BorderBrush="Black" Margin="0">
+                                <TextBlock Margin="4 0" Width="15" Text="{Binding SurfaceDevisions}" />
+                            </Border>
+                            <Slider Value="{Binding SurfaceDevisions, Mode=TwoWay}" Minimum="1" Maximum="20" TickFrequency="1" IsSnapToTickEnabled="True" Width="100" />
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
+        <Border Grid.Row="1" BorderBrush="Black" BorderThickness="1" Margin="5 0 5 5" Background="AliceBlue">
+            <Grid>
+                <controls3D:Scene3D x:Name="scene" />
+                <CAGD:InfoButton Width="15" Height="15" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5" />
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

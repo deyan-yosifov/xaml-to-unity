@@ -58,3 +58,7 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+XamlDemo/CAGD/obj/
+XamlDemo/CAGD/bin/
+!*XamlDemo.sln
+!*CAGD.csproj
