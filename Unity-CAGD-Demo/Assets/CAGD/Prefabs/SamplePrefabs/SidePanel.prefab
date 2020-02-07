@@ -1257,6 +1257,7 @@ GameObject:
   - component: {fileID: 9223366870113134309}
   - component: {fileID: 1517980561827658376}
   - component: {fileID: 5351146866907217933}
+  - component: {fileID: 5108820111804704464}
   m_Layer: 5
   m_Name: Viewport
   m_TagString: Untagged
@@ -1307,7 +1308,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1342,6 +1343,18 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: 1000
   m_LayoutPriority: 1
+--- !u!114 &5108820111804704464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6116833055530705232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a45c0d0cefe974469159c9f0acb80cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6414015007904250290
 GameObject:
   m_ObjectHideFlags: 0
@@ -1827,6 +1840,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7589807936523968096}
     m_Modifications:
+    - target: {fileID: 8184002226555709987, guid: 2909517e4f28a3a498b8d0cb0b9e119d,
+        type: 3}
+      propertyPath: m_Name
+      value: Control lines
+      objectReference: {fileID: 0}
     - target: {fileID: 2330581860458670119, guid: 2909517e4f28a3a498b8d0cb0b9e119d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1932,11 +1950,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 8184002226555709987, guid: 2909517e4f28a3a498b8d0cb0b9e119d,
-        type: 3}
-      propertyPath: m_Name
-      value: Control lines
-      objectReference: {fileID: 0}
     - target: {fileID: 2627659827851830585, guid: 2909517e4f28a3a498b8d0cb0b9e119d,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -1982,6 +1995,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7589807936523968096}
     m_Modifications:
+    - target: {fileID: 8184002226555709987, guid: 2909517e4f28a3a498b8d0cb0b9e119d,
+        type: 3}
+      propertyPath: m_Name
+      value: Surface geometry
+      objectReference: {fileID: 0}
     - target: {fileID: 2330581860458670119, guid: 2909517e4f28a3a498b8d0cb0b9e119d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2087,11 +2105,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 8184002226555709987, guid: 2909517e4f28a3a498b8d0cb0b9e119d,
-        type: 3}
-      propertyPath: m_Name
-      value: Surface geometry
-      objectReference: {fileID: 0}
     - target: {fileID: 2627659827851830585, guid: 2909517e4f28a3a498b8d0cb0b9e119d,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -2137,6 +2150,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7589807936523968096}
     m_Modifications:
+    - target: {fileID: 8184002226555709987, guid: 2909517e4f28a3a498b8d0cb0b9e119d,
+        type: 3}
+      propertyPath: m_Name
+      value: Smooth surface
+      objectReference: {fileID: 0}
     - target: {fileID: 2330581860458670119, guid: 2909517e4f28a3a498b8d0cb0b9e119d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2242,11 +2260,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 8184002226555709987, guid: 2909517e4f28a3a498b8d0cb0b9e119d,
-        type: 3}
-      propertyPath: m_Name
-      value: Smooth surface
-      objectReference: {fileID: 0}
     - target: {fileID: 2627659827851830585, guid: 2909517e4f28a3a498b8d0cb0b9e119d,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -2292,6 +2305,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3071462859317048229}
     m_Modifications:
+    - target: {fileID: 8184002226555709987, guid: 2909517e4f28a3a498b8d0cb0b9e119d,
+        type: 3}
+      propertyPath: m_Name
+      value: Direction Y
+      objectReference: {fileID: 0}
     - target: {fileID: 2330581860458670119, guid: 2909517e4f28a3a498b8d0cb0b9e119d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2397,11 +2415,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 8184002226555709987, guid: 2909517e4f28a3a498b8d0cb0b9e119d,
-        type: 3}
-      propertyPath: m_Name
-      value: Direction Y
-      objectReference: {fileID: 0}
     - target: {fileID: 2627659827851830585, guid: 2909517e4f28a3a498b8d0cb0b9e119d,
         type: 3}
       propertyPath: m_text
@@ -2447,6 +2460,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7589807936523968096}
     m_Modifications:
+    - target: {fileID: 8184002226555709987, guid: 2909517e4f28a3a498b8d0cb0b9e119d,
+        type: 3}
+      propertyPath: m_Name
+      value: Control points
+      objectReference: {fileID: 0}
     - target: {fileID: 2330581860458670119, guid: 2909517e4f28a3a498b8d0cb0b9e119d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2551,11 +2569,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8184002226555709987, guid: 2909517e4f28a3a498b8d0cb0b9e119d,
-        type: 3}
-      propertyPath: m_Name
-      value: Control points
       objectReference: {fileID: 0}
     - target: {fileID: 2627659827851830585, guid: 2909517e4f28a3a498b8d0cb0b9e119d,
         type: 3}
@@ -2602,6 +2615,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3071462859317048229}
     m_Modifications:
+    - target: {fileID: 8184002226555709987, guid: 2909517e4f28a3a498b8d0cb0b9e119d,
+        type: 3}
+      propertyPath: m_Name
+      value: Direction X
+      objectReference: {fileID: 0}
     - target: {fileID: 2330581860458670119, guid: 2909517e4f28a3a498b8d0cb0b9e119d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2707,11 +2725,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 8184002226555709987, guid: 2909517e4f28a3a498b8d0cb0b9e119d,
-        type: 3}
-      propertyPath: m_Name
-      value: Direction X
-      objectReference: {fileID: 0}
     - target: {fileID: 2627659827851830585, guid: 2909517e4f28a3a498b8d0cb0b9e119d,
         type: 3}
       propertyPath: m_text
@@ -2747,6 +2760,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4510072115991579561}
     m_Modifications:
+    - target: {fileID: 4114625337648773450, guid: e7b85c150d2742c409e347d057a4a48f,
+        type: 3}
+      propertyPath: m_Name
+      value: Surface degree slider
+      objectReference: {fileID: 0}
     - target: {fileID: 3545052632031471590, guid: e7b85c150d2742c409e347d057a4a48f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2852,11 +2870,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 4114625337648773450, guid: e7b85c150d2742c409e347d057a4a48f,
-        type: 3}
-      propertyPath: m_Name
-      value: Surface degree slider
-      objectReference: {fileID: 0}
     - target: {fileID: 2610302019447619199, guid: e7b85c150d2742c409e347d057a4a48f,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -2882,6 +2895,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3071462859317048229}
     m_Modifications:
+    - target: {fileID: 8184002226555709987, guid: 2909517e4f28a3a498b8d0cb0b9e119d,
+        type: 3}
+      propertyPath: m_Name
+      value: Direction Z
+      objectReference: {fileID: 0}
     - target: {fileID: 2330581860458670119, guid: 2909517e4f28a3a498b8d0cb0b9e119d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2987,11 +3005,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 8184002226555709987, guid: 2909517e4f28a3a498b8d0cb0b9e119d,
-        type: 3}
-      propertyPath: m_Name
-      value: Direction Z
-      objectReference: {fileID: 0}
     - target: {fileID: 2627659827851830585, guid: 2909517e4f28a3a498b8d0cb0b9e119d,
         type: 3}
       propertyPath: m_text
@@ -3037,6 +3050,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6360462037853364610}
     m_Modifications:
+    - target: {fileID: 4114625337648773450, guid: e7b85c150d2742c409e347d057a4a48f,
+        type: 3}
+      propertyPath: m_Name
+      value: Surface devisions slider
+      objectReference: {fileID: 0}
     - target: {fileID: 3545052632031471590, guid: e7b85c150d2742c409e347d057a4a48f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3142,17 +3160,7 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 4114625337648773450, guid: e7b85c150d2742c409e347d057a4a48f,
-        type: 3}
-      propertyPath: m_Name
-      value: Surface devisions slider
-      objectReference: {fileID: 0}
     - target: {fileID: 2610302019447619199, guid: e7b85c150d2742c409e347d057a4a48f,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8153238599503751940, guid: e7b85c150d2742c409e347d057a4a48f,
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3161,6 +3169,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_MaxValue
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8153238599503751940, guid: e7b85c150d2742c409e347d057a4a48f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3994413399641084552, guid: e7b85c150d2742c409e347d057a4a48f,
         type: 3}
@@ -3197,6 +3210,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7589807936523968096}
     m_Modifications:
+    - target: {fileID: 8184002226555709987, guid: 2909517e4f28a3a498b8d0cb0b9e119d,
+        type: 3}
+      propertyPath: m_Name
+      value: Surface lines
+      objectReference: {fileID: 0}
     - target: {fileID: 2330581860458670119, guid: 2909517e4f28a3a498b8d0cb0b9e119d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3301,11 +3319,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8184002226555709987, guid: 2909517e4f28a3a498b8d0cb0b9e119d,
-        type: 3}
-      propertyPath: m_Name
-      value: Surface lines
       objectReference: {fileID: 0}
     - target: {fileID: 2627659827851830585, guid: 2909517e4f28a3a498b8d0cb0b9e119d,
         type: 3}

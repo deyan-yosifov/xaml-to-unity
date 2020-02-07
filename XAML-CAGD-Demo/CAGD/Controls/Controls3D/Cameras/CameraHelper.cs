@@ -147,7 +147,7 @@ namespace CAGD.Controls.Controls3D.Cameras
             Vector3D i, j, k;
             CameraHelper.GetCameraLocalCoordinateVectors(camera.LookDirection, camera.UpDirection, out i, out j, out k);
             double unitWidth = CameraHelper.GetUnityDistantPlaneWidth(camera.FieldOfView);
-            double unitHeight = viewportSize.Height * unitWidth / viewportSize.Width;            
+            double unitHeight = viewportSize.Height * unitWidth / viewportSize.Width;
             Vector3D leftSlopeNormal = i + (unitWidth / 2) * k;
             Vector3D rightSlopeNormal = -i + (unitWidth / 2) * k;
             Vector3D topSlopeNormal = j + (unitHeight / 2) * k;

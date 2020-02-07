@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 namespace CAGD.SampleScripts
 {
-    public class InfoButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler
+    public class InfoButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler, IDragHandler
     {
         public Color32 normalColor = new Color32(0, 0, 255, 0x44);
         public Color32 hoverColor = new Color32(0, 0, 255, 0xaa);
@@ -62,6 +62,11 @@ namespace CAGD.SampleScripts
         {
             this.isHovered = false;
             this.ChangeColor();
+        }
+
+        void IDragHandler.OnDrag(PointerEventData eventData)
+        {
+            // Empty implementation allowing to capture the drag event instead of the viewport.
         }
     }
 }
