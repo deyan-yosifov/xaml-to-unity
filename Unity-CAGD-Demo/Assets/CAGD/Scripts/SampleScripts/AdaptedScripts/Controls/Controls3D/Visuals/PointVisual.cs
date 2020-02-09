@@ -3,16 +3,15 @@ using UnityEngine;
 
 namespace CAGD.Controls.Controls3D.Visuals
 {
-    [RequireComponent(typeof(MeshRenderer))]
     public class PointVisual : MonoBehaviour, IVisual3D
     {
+        [SerializeField]
         private MeshRenderer mesh;
         private Collider colliderComponent;
 
         private void Awake()
         {
-            this.mesh = this.GetComponent<MeshRenderer>();
-            this.colliderComponent = this.GetComponent<Collider>();
+            this.colliderComponent = this.mesh.GetComponent<Collider>();
         }
 
         public bool IsVisible

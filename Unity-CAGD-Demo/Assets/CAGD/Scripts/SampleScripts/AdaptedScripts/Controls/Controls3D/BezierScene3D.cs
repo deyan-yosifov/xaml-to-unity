@@ -10,13 +10,12 @@ namespace CAGD.Controls.Controls3D
         public LineVisual surfaceLinePrefab;
         public LineVisual controlLinePrefab;
         public SurfaceVisual surfacePrefab;
-        [SerializeField]
-        private IteractivePointsHandler iteractivePointsHandler;
+        public IteractivePointsHandler iteractivePointsHandler;
 
         public PointVisual AddIteractivePoint()
         {
             PointVisual instance = Instantiate<PointVisual>(this.controlPointPrefab, this.transform);
-            this.iteractivePointsHandler?.RegisterIteractivePoint(instance);
+            this.iteractivePointsHandler.RegisterIteractivePoint(instance);
 
             return instance;
         }

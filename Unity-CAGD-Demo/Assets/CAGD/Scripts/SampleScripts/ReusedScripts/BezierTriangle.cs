@@ -72,6 +72,14 @@ namespace CAGD
             }
         }
 
+        public int TrianglesCount
+        {
+            get
+            {
+                return this.degree * this.degree;
+            }
+        }
+
         public Vector3 GetMeshPoint(float uBarycentricCoordinate, float vBarycentricCoordinate)
         {
             return this.GetMeshPoint(uBarycentricCoordinate, vBarycentricCoordinate, 1 - uBarycentricCoordinate - vBarycentricCoordinate);
@@ -82,19 +90,19 @@ namespace CAGD
             return ((devisions + 1) * (devisions + 2)) / 2;
         }
 
-        public static void IterateTriangleCoordinates(int sideDevisions, Action<double, double> actionOnUVCoordinates)
+        public static void IterateTriangleCoordinates(int sideDevisions, Action<float, float> actionOnUVCoordinates)
         {
             int wLevelsMaximum = sideDevisions;
 
             for (int wLevel = 0; wLevel <= wLevelsMaximum; wLevel++)
             {
-                double w = (double)wLevel / sideDevisions;
+                float w = (float)wLevel / sideDevisions;
                 int vLevelsMaximum = sideDevisions - wLevel;
 
                 for (int vLevel = 0; vLevel <= vLevelsMaximum; vLevel++)
                 {
-                    double v = (double)vLevel / sideDevisions;
-                    double u = 1 - v - w;
+                    float v = (float)vLevel / sideDevisions;
+                    float u = 1 - v - w;
                     actionOnUVCoordinates(u, v);
                 }
             }

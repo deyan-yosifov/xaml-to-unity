@@ -2,16 +2,11 @@
 
 namespace CAGD.Controls.Controls3D.Visuals
 {
-    [RequireComponent(typeof(MeshRenderer))]
     public class LineVisual : MonoBehaviour, IVisual3D
     {
-        private static readonly Vector3 InitialVector = Vector3.forward;
+        [SerializeField]
         private MeshRenderer mesh;
-
-        private void Awake()
-        {
-            this.mesh = this.GetComponent<MeshRenderer>();
-        }
+        private static readonly Vector3 InitialVector = Vector3.forward;
 
         public bool IsVisible
         {

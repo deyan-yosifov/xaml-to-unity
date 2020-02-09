@@ -10,7 +10,7 @@ namespace CAGD
     public abstract class BezierGeometryManagerBase<T> : IContentProvider
         where T : BezierGeometryContextBase
     {
-        private readonly BezierScene3D scene;
+        protected readonly BezierScene3D scene;
         protected readonly Visual3DPool<PointVisual> controlPointsPool;
         private readonly Visual3DPool<LineVisual> controlLinesPool;
         private readonly Visual3DPool<LineVisual> surfaceLinesPool;

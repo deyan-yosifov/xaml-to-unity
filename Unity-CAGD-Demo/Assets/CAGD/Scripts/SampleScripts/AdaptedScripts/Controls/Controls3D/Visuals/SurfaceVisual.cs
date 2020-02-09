@@ -2,16 +2,15 @@
 
 namespace CAGD.Controls.Controls3D.Visuals
 {
-    [RequireComponent(typeof(MeshFilter))]
-    [RequireComponent(typeof(MeshRenderer))]
     public class SurfaceVisual : MonoBehaviour, IVisual3D
     {
+        [SerializeField]
         private MeshRenderer mesh;
         private MeshFilter filter;
 
         private void Awake()
         {
-            this.mesh = this.GetComponent<MeshRenderer>();
+            this.filter = this.mesh.GetComponent<MeshFilter>();
         }
 
         public bool IsVisible

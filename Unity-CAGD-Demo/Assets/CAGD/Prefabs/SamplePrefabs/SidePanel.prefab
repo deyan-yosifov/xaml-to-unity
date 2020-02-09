@@ -1258,6 +1258,7 @@ GameObject:
   - component: {fileID: 1517980561827658376}
   - component: {fileID: 5351146866907217933}
   - component: {fileID: 5108820111804704464}
+  - component: {fileID: 8976931243888872728}
   m_Layer: 5
   m_Name: Viewport
   m_TagString: Untagged
@@ -1353,6 +1354,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2a45c0d0cefe974469159c9f0acb80cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8976931243888872728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6116833055530705232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c2ebf56ef8fc34488500737aa844469, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6414015007904250290
@@ -1515,7 +1528,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.85490197}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1738,7 +1751,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: "You may do the following actions on the viewport:\r\n - ORBIT => Drag with
-    mouse left or rigth button down.\r\n - PAN => Drag with middle mouse button down.\r\n
+    mouse left or right button down.\r\n - PAN => Drag with middle mouse button down.\r\n
     - ZOOM => Scroll with the mouse wheel.\r\n - ZOOM TO CONTENTS => Double click
     with middle mouse button.\r\n - MOVE BEZIER CONTROL POINT => Drag some control
     point with mouse left or right button down."
