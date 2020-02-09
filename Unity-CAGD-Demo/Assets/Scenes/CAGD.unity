@@ -586,6 +586,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7197189659336061186, guid: f9dedf2cd34c67743a2b0c61f81ef906,
+        type: 3}
+      propertyPath: m_Name
+      value: RightPanel
+      objectReference: {fileID: 0}
     - target: {fileID: 8705027686092601288, guid: f9dedf2cd34c67743a2b0c61f81ef906,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -1085,11 +1090,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7197189659336061186, guid: f9dedf2cd34c67743a2b0c61f81ef906,
-        type: 3}
-      propertyPath: m_Name
-      value: RightPanel
       objectReference: {fileID: 0}
     - target: {fileID: 8547677378431600904, guid: f9dedf2cd34c67743a2b0c61f81ef906,
         type: 3}
