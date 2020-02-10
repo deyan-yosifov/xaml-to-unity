@@ -165,6 +165,7 @@ namespace CAGD
 
             mesh.vertices = this.GetDoubleSidedVertices(vertices);
             mesh.triangles = this.GetDoubleSidedTriangles(triangleIndices, vertices.Length);
+            mesh.RecalculateNormals();
 
             return mesh;
         }
