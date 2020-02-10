@@ -166,6 +166,40 @@ namespace CAGD
 
         protected abstract Mesh CalculateSharpSurfaceGeometry();
 
+        protected Vector3[] GetDoubleSidedVertices(Vector3[] singleSidedVertices)
+        {
+            int singleSideCount = singleSidedVertices.Length;
+            Vector3[] result = new Vector3[singleSideCount * 2];
+
+            for (int side = 0; side < 2; side++)
+            {
+                for (int i = 0; i < singleSideCount; i++)
+                {
+                    result[side * singleSideCount + i] = singleSidedVertices[i];
+                }
+            }
+
+            return result;
+        }
+
+        protected int[] GetDoubleSidedTriangles(int[] singleSidedTriangleIndices, int singleSideVertexCount)
+        {
+            int singleSideCount = singleSidedTriangleIndices.Length;
+            int[] result = new int[singleSideCount * 2];
+
+            for (int side = 0; side < 2; side++)
+            {
+                for (int i = 0; i < singleSideCount; i++)
+                {
+                    int remainder = i % 3;
+                    int swap = side * (remainder == 1 ? 1 : (remainder == 2 ? -1 : 0));
+                    result[side * singleSideCount + i] = singleSidedTriangleIndices[i + swap] + side * singleSideVertexCount;
+                }
+            }
+
+            return result;
+        }
+
         private void EnsureVisibleLinesCount(List<LineVisual> visibleLines, Visual3DPool<LineVisual> linesPool, BezierScene3D.LineType lineType, int visibleCount)
         {
             while (visibleLines.Count < visibleCount)

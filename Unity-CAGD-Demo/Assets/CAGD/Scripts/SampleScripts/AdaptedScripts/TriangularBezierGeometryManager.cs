@@ -127,7 +127,7 @@ namespace CAGD
                 vertices[i] = this.surfacePoints[i];
             }
 
-            mesh.vertices = vertices;
+            mesh.vertices = this.GetDoubleSidedVertices(vertices);
 
             int[] triangleIndices = new int[this.surfacePoints.TrianglesCount * 3];
             int triangleVertexIndex = 0;
@@ -139,7 +139,7 @@ namespace CAGD
                 triangleIndices[triangleVertexIndex++] = c;
             });
 
-            mesh.triangles = triangleIndices;
+            mesh.triangles = this.GetDoubleSidedTriangles(triangleIndices, vertices.Length);
             mesh.RecalculateNormals();
 
             return mesh;
@@ -163,8 +163,8 @@ namespace CAGD
                 triangleIndices[triangleVertexIndex++] = vertexIndex - 1;
             });
 
-            mesh.vertices = vertices;
-            mesh.triangles = triangleIndices;
+            mesh.vertices = this.GetDoubleSidedVertices(vertices);
+            mesh.triangles = this.GetDoubleSidedTriangles(triangleIndices, vertices.Length);
 
             return mesh;
         }

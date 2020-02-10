@@ -78,8 +78,8 @@ namespace CAGD
             int vCount = this.surfacePoints.GetLength(1);
             Vector3[] vertices = CalculateSmoothSurfaceVertices(uCount, vCount);
             int[] triangleIndices = CalculateSmoothSurfaceTriangleIndices(uCount, vCount);
-            meshGeometry.vertices = vertices;
-            meshGeometry.triangles = triangleIndices;
+            meshGeometry.vertices = this.GetDoubleSidedVertices(vertices);
+            meshGeometry.triangles = this.GetDoubleSidedTriangles(triangleIndices, vertices.Length);
             meshGeometry.RecalculateNormals();
 
             return meshGeometry;
@@ -156,8 +156,8 @@ namespace CAGD
                 }
             }
 
-            meshGeometry.vertices = vertices;
-            meshGeometry.triangles = triangleIndices;
+            meshGeometry.vertices = this.GetDoubleSidedVertices(vertices);
+            meshGeometry.triangles = this.GetDoubleSidedTriangles(triangleIndices, vertices.Length);
             meshGeometry.RecalculateNormals();
 
             return meshGeometry;
