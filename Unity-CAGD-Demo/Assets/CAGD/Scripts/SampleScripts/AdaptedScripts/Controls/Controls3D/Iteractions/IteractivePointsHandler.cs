@@ -107,7 +107,7 @@ namespace CAGD.Controls.Controls3D.Iteractions
         public bool TryHandleMouseDown(PointerEventArgs<PointerEventData> e)
         {
             this.ReleaseCapturedPoint();
-            Camera camera = e.data.pressEventCamera;
+            Camera camera = e.raycastCamera;
 
             if (Physics.Raycast(camera.ScreenPointToRay(e.data.pressPosition), out RaycastHit hit) )
             {

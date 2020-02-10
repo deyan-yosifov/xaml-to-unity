@@ -5,14 +5,14 @@ namespace CAGD.Controls.PointerHandlers
     public class PointerEventArgs<T>
     {
         public readonly T data;
-        public readonly GameObject sender;
         public readonly float timeStamp;
+        public readonly Camera raycastCamera;
 
-        public PointerEventArgs(GameObject sender, T data)
+        public PointerEventArgs(Camera raycastCamera, T data)
         {
-            this.sender = sender;
             this.data = data;
             this.timeStamp = Time.time;
+            this.raycastCamera = raycastCamera;
         }
     }
 }

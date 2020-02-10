@@ -44,6 +44,11 @@ namespace CAGD.Controls.Controls3D.Iteractions
             this.firstIteractionPosition = point;
             Vector2 viewportPosition = camera.WorldToScreenPoint(point);
             this.CalculateFirstIteractionInfo(camera, viewportPosition);
+
+            if (this.firstIteractionInfo != null)
+            {
+                this.firstIteractionInfo.Camera = camera;
+            }
         }
 
         public void EndIteraction()

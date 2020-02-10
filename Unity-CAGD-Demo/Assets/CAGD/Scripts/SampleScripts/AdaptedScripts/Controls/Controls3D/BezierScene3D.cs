@@ -16,6 +16,7 @@ namespace CAGD.Controls.Controls3D
         {
             PointVisual instance = Instantiate<PointVisual>(this.controlPointPrefab, this.transform);
             this.iteractivePointsHandler.RegisterIteractivePoint(instance);
+            this.SetLayerRecursively(instance.gameObject);
 
             return instance;
         }
@@ -24,6 +25,7 @@ namespace CAGD.Controls.Controls3D
         {
             LineVisual prefab = lineType == LineType.SurfaceLine ? this.surfaceLinePrefab : this.controlLinePrefab;
             LineVisual instance = Instantiate<LineVisual>(prefab, this.transform);
+            this.SetLayerRecursively(instance.gameObject);
 
             return instance;
         }
@@ -31,8 +33,22 @@ namespace CAGD.Controls.Controls3D
         public SurfaceVisual AddSurface()
         {
             SurfaceVisual instance = Instantiate<SurfaceVisual>(this.surfacePrefab, this.transform);
+            this.SetLayerRecursively(instance.gameObject);
 
             return instance;
+        }
+
+        private void SetLayerRecursively(GameObject obj)
+        {
+            obj.layer = this.gameObject.layer;
+
+            foreach (Transform child in obj.transform)
+            {
+                if (child)
+                {
+                    SetLayerRecursively(child.gameObject);
+                }
+            }
         }
 
         public enum LineType
