@@ -15,7 +15,12 @@ namespace CAGD.Controls.Controls3D
         public PointVisual AddIteractivePoint()
         {
             PointVisual instance = Instantiate<PointVisual>(this.controlPointPrefab, this.transform);
-            this.iteractivePointsHandler.RegisterIteractivePoint(instance);
+
+            if (this.iteractivePointsHandler && this.iteractivePointsHandler.isActiveAndEnabled)
+            {
+                this.iteractivePointsHandler.RegisterIteractivePoint(instance);
+            }
+
             this.SetLayerRecursively(instance.gameObject);
 
             return instance;

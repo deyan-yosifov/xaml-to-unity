@@ -7,6 +7,8 @@ namespace CAGD
     {
         [SerializeField]
         private float initialSurfaceSquareSide = 1;
+        [SerializeField]
+        private Vector3 initialCenterOffset = new Vector3(-0.7f, 1, 0);
         private int degreeInDirectionU = 3;
         private int degreeInDirectionV = 4;
         private int devisionsInDirectionU = 10;
@@ -114,7 +116,7 @@ namespace CAGD
                     float x = startX + u * deltaX;
                     float y = startY + v * deltaY;
 
-                    points[u, v] = new Vector3(x, 0, y);
+                    points[u, v] = new Vector3(x, 0, y) + this.initialCenterOffset;
                 }
             }
 

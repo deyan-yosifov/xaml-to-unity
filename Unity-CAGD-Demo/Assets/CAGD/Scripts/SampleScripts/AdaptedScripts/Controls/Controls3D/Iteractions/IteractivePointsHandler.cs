@@ -54,11 +54,11 @@ namespace CAGD.Controls.Controls3D.Iteractions
         {
             get
             {
-                return this.restrictor.CanMoveOnXAxis;
+                return this.Restrictor.CanMoveOnXAxis;
             }
             set
             {
-                this.restrictor.CanMoveOnXAxis = value;
+                this.Restrictor.CanMoveOnXAxis = value;
             }
         }
 
@@ -66,11 +66,11 @@ namespace CAGD.Controls.Controls3D.Iteractions
         {
             get
             {
-                return this.restrictor.CanMoveOnYAxis;
+                return this.Restrictor.CanMoveOnYAxis;
             }
             set
             {
-                this.restrictor.CanMoveOnYAxis = value;
+                this.Restrictor.CanMoveOnYAxis = value;
             }
         }
 
@@ -78,11 +78,11 @@ namespace CAGD.Controls.Controls3D.Iteractions
         {
             get
             {
-                return this.restrictor.CanMoveOnZAxis;
+                return this.Restrictor.CanMoveOnZAxis;
             }
             set
             {
-                this.restrictor.CanMoveOnZAxis = value;
+                this.Restrictor.CanMoveOnZAxis = value;
             }
         }
 
@@ -91,6 +91,19 @@ namespace CAGD.Controls.Controls3D.Iteractions
             get
             {
                 return this.capturedPoint;
+            }
+        }
+
+        private IteractionRestrictor Restrictor
+        {
+            get
+            {
+                if (this.restrictor == null)
+                {
+                    this.restrictor = new IteractionRestrictor();
+                }
+
+                return this.restrictor;
             }
         }
 
@@ -126,7 +139,7 @@ namespace CAGD.Controls.Controls3D.Iteractions
 
         public bool TryHandleMouseUp(PointerEventArgs<PointerEventData> e)
         {
-            if (this.restrictor.IsInIteraction)
+            if (this.Restrictor.IsInIteraction)
             {
                 this.ReleaseCapturedPoint();
 
@@ -138,12 +151,12 @@ namespace CAGD.Controls.Controls3D.Iteractions
 
         public bool TryHandleMouseMove(PointerEventArgs<PointerEventData> e)
         {
-            if (this.restrictor.IsInIteraction)
+            if (this.Restrictor.IsInIteraction)
             {
                 Vector2 viewportPosition = e.data.position;
 
                 Vector3 position;
-                if (this.restrictor.TryGetIteractionPoint(viewportPosition, out position))
+                if (this.Restrictor.TryGetIteractionPoint(viewportPosition, out position))
                 {
                     this.capturedPoint.Position = position;
                 }
@@ -156,7 +169,7 @@ namespace CAGD.Controls.Controls3D.Iteractions
 
         public bool TryHandleMouseWheel(PointerEventArgs<MouseWheelEventData> e)
         {
-            return this.restrictor.IsInIteraction;
+            return this.Restrictor.IsInIteraction;
         }
 
         public event EventHandler PointCaptured;
@@ -164,7 +177,6 @@ namespace CAGD.Controls.Controls3D.Iteractions
 
         private void Awake()
         {
-            this.restrictor = new IteractionRestrictor();
             this.registeredPoints = new HashSet<PointVisual>();
             this.capturedPoint = null;
             this.IsEnabled = true;
@@ -173,17 +185,17 @@ namespace CAGD.Controls.Controls3D.Iteractions
         private void CapturePoint(Camera camera, PointVisual point)
         {
             this.capturedPoint = point;
-            this.restrictor.BeginIteraction(camera, point.Position);
+            this.Restrictor.BeginIteraction(camera, point.Position);
 
             this.OnPointCaptured();
         }
 
         private void ReleaseCapturedPoint()
         {
-            if (this.restrictor.IsInIteraction)
+            if (this.Restrictor.IsInIteraction)
             {
                 this.capturedPoint = null;
-                this.restrictor.EndIteraction();
+                this.Restrictor.EndIteraction();
 
                 this.OnPointReleased();
             }

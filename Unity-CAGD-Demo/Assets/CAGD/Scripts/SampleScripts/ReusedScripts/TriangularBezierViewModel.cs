@@ -8,7 +8,7 @@ namespace CAGD
         [SerializeField]
         private float initialSurfaceTriangleSide = 1.2f;
         [SerializeField]
-        private float initialCenterOffset = -1.4f;
+        private Vector3 initialCenterOffset = new Vector3(0.7f, 1, 0);
         private BezierTriangle initialBezierTriangle;
         private int surfaceDegree = 4;
         private int surfaceDevisions = 10;
@@ -79,10 +79,9 @@ namespace CAGD
             Quaternion rotation = Quaternion.AngleAxis(120, Vector3.up);
             Vector3 a = rotation * c;
             Vector3 b = rotation * a;
-            Vector3 offset = new Vector3(this.initialCenterOffset, 0, 0);
-            a += offset;
-            b += offset;
-            c += offset;
+            a += this.initialCenterOffset;
+            b += this.initialCenterOffset;
+            c += this.initialCenterOffset;
 
             return new BezierTriangle(new Vector3[] { a, b, c });
         }

@@ -250,6 +250,12 @@ namespace CAGD
             {
                 this.visibleSurfaceGeometry.Mesh = this.CalculateSharpSurfaceGeometry();
             }
+
+            MeshCollider collider = this.visibleSurfaceGeometry.GetComponent<MeshCollider>();
+            if (collider)
+            {
+                collider.sharedMesh = this.visibleSurfaceGeometry.Mesh;
+            }
         }
 
         private void AttachToPointEvents(PointVisual point)
