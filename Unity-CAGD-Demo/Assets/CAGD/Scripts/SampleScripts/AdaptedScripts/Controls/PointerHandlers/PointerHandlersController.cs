@@ -40,7 +40,8 @@ namespace CAGD.Controls.PointerHandlers
             
             if (this.isPointerEntered && wheel != 0)
             {
-                PointerEventArgs<MouseWheelEventData> e = new PointerEventArgs<MouseWheelEventData>(this.raycastCamera, new MouseWheelEventData() { delta = wheel });
+                MouseWheelEventData data = new MouseWheelEventData() { delta = wheel, position = Input.mousePosition };
+                PointerEventArgs<MouseWheelEventData> e = new PointerEventArgs<MouseWheelEventData>(this.raycastCamera, data);
 
                 if (this.capturedHandler != null && this.capturedHandler.IsEnabled)
                 {
