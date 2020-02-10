@@ -10,7 +10,6 @@ namespace CAGD.Controls.Controls3D.Cameras
     {
         private const float FullCircleAngleInDegrees = 360;
         private const float WheelSingleDelta = 0.1f;
-        private static readonly Vector3 zAxisVector = new Vector3(0, 0, 1);
         [SerializeField]
         private float zoomSpeed = 0.1f;
         [SerializeField]
@@ -21,6 +20,7 @@ namespace CAGD.Controls.Controls3D.Cameras
         private bool isEnabled;
         private DragAction dragAction;
         private Vector3 firstPanDirection;
+        private Vector3 firstPanCameraForward;
         private OrbitPositionInfo firstOrbitPosition;
 
 
@@ -175,14 +175,14 @@ namespace CAGD.Controls.Controls3D.Cameras
             float rollAngle = 0;
             reverseLookDirection.Normalize();
 
-            if (Math.Abs(reverseLookDirection.z).IsEqualTo(zAxisVector.z))
+            if (Math.Abs(reverseLookDirection.y).IsEqualTo(1))
             {
                 previousCameraLookDirection.Normalize();
 
-                if (Math.Abs(previousCameraLookDirection.z) != zAxisVector.z)
+                if (Math.Abs(previousCameraLookDirection.y) != 1)
                 {
-                    Vector2 projectedPreviousLook = new Vector2(previousCameraLookDirection.x, previousCameraLookDirection.y);
-                    Vector2 currentLookUp = new Vector2(0, -reverseLookDirection.z);
+                    Vector2 projectedPreviousLook = new Vector2(previousCameraLookDirection.x, previousCameraLookDirection.z);
+                    Vector2 currentLookUp = new Vector2(0, -reverseLookDirection.y);
 
                     rollAngle = Vector2.Angle(projectedPreviousLook, currentLookUp);
                 }
@@ -199,24 +199,18 @@ namespace CAGD.Controls.Controls3D.Cameras
             return fullCircleLength;
         }
 
-        private void Pan(Camera perspectiveCamera, Vector2 panPoint)
+        private void Pan(Camera camera, Vector2 panPoint)
         {
-            Ray ray = perspectiveCamera.ScreenPointToRay(panPoint);
+            Ray ray = camera.ScreenPointToRay(panPoint);
             Vector3 panDirection = ray.direction;
-
-            this.Pan(perspectiveCamera, perspectiveCamera.transform.position, perspectiveCamera.transform.forward, panDirection);
-        }
-
-        private void Pan(Camera camera, Vector3 currentCameraPosition, Vector3 currentCameraLookDirection, Vector3 panDirection)
-        {
             float angle = Vector3.Angle(firstPanDirection, panDirection);
 
             if (!angle.IsZero())
             {
-                Vector3 rotationAxis = Vector3.Cross(panDirection, firstPanDirection);
-                rotationAxis.Normalize();
+                Vector3 currentCameraPosition = camera.transform.position;
+                Vector3 currentCameraLookDirection = camera.transform.forward;
+                Vector3 rotationAxis = Vector3.Cross(panDirection, firstPanDirection).normalized;
                 Vector3 cameraLookDirection = Quaternion.AngleAxis(angle, rotationAxis) * currentCameraLookDirection;
-
                 camera.Look(currentCameraPosition, currentCameraPosition + cameraLookDirection, 0);
             }
         }
@@ -225,6 +219,7 @@ namespace CAGD.Controls.Controls3D.Cameras
         {
             Ray ray = perspectiveCamera.ScreenPointToRay(panPoint);
             this.firstPanDirection = ray.direction;
+            this.firstPanCameraForward = perspectiveCamera.transform.forward;
         }
 
         private void Zoom(Camera perspectiveCamera, Vector2 position, float zoomAmount)

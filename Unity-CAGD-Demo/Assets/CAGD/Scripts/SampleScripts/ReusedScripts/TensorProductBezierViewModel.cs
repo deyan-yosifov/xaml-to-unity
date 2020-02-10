@@ -114,7 +114,7 @@ namespace CAGD
                     float x = startX + u * deltaX;
                     float y = startY + v * deltaY;
 
-                    points[u, v] = new Vector3(x, y, 0);
+                    points[u, v] = new Vector3(x, 0, y);
                 }
             }
 

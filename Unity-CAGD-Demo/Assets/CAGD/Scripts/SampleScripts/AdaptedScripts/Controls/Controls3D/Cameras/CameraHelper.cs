@@ -8,7 +8,7 @@ namespace CAGD.Controls.Controls3D.Cameras
 {
     public static class CameraHelper
     {
-        private static readonly Vector3 WorldUp = Vector3.forward;
+        private static readonly Vector3 WorldUp = Vector3.up;
 
         public static void Look(this Camera camera, Vector3 fromPoint, Vector3 toPoint, float rollAngleInDegrees)
         {
