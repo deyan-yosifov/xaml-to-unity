@@ -79,16 +79,14 @@ namespace CAGD.Controls.Controls3D.Cameras
 
         public void ZoomToContents(Camera camera)
         {
-            //IEnumerable<Vector3> contentPoints = this.contentProvider.GetContentPoints();
-            //Vector3 fromPoint = CameraHelper.GetZoomToContentsCameraPosition(perspectiveCamera, this.sceneEditor.ViewportSize, contentPoints);
-            //Vector3 i, j, k;
-            //CameraHelper.GetCameraLocalCoordinateVectors(perspectiveCamera.LookDirection, perspectiveCamera.UpDirection, out i, out j, out k);
-            //Vector3 boundingCenter = GeometryHelper.GetBoundingRectangleCenter(contentPoints, i, j, k);
-            //Vector3 lookDirection = camera.transform.forward;
-            //lookDirection.Normalize();
-            //float projectedCoordinate = Vector3.Dot(lookDirection, boundingCenter - fromPoint);
-            //Vector3 projectedCenter = fromPoint + projectedCoordinate * lookDirection;
-            //camera.Look(fromPoint, projectedCenter, 0);
+            IEnumerable<Vector3> contentPoints = this.contentProvider.GetContentPoints();
+            Vector3 fromPoint = CameraHelper.GetZoomToContentsCameraPosition(camera, contentPoints);
+            Vector3 boundingCenter = GeometryHelper.GetBoundingRectangleCenter(contentPoints, camera.transform.right, camera.transform.up, camera.transform.forward);
+            Vector3 lookDirection = camera.transform.forward;
+            lookDirection.Normalize();
+            float projectedCoordinate = Vector3.Dot(lookDirection, boundingCenter - fromPoint);
+            Vector3 projectedCenter = fromPoint + projectedCoordinate * lookDirection;
+            camera.Look(fromPoint, projectedCenter, 0);
         }
     }
 }
