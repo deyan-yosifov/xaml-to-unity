@@ -19,7 +19,7 @@ namespace CAGD.SampleScripts
             this.property.SetValue(this.viewModel, value);
         }
 
-        protected virtual void Awake()
+        protected virtual void Start()
         {
             this.viewModel = this.GetComponentInParent<INotifyPropertyChanged>();
             this.viewModel.PropertyChanged += this.ViewModelPropertyChanged;

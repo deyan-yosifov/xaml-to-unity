@@ -9,12 +9,12 @@ namespace CAGD.SampleScripts
     {
         private Slider slider;
 
-        protected override void Awake()
+        protected override void Start()
         {
             this.slider = this.GetComponent<Slider>();
             this.slider.onValueChanged.AddListener(new UnityAction<float>(this.OnSliderValueChanged));
 
-            base.Awake();
+            base.Start();
         }
 
         protected override void GetPropertyValue(object value)

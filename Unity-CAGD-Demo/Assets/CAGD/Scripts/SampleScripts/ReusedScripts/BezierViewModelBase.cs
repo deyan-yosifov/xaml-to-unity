@@ -1,6 +1,5 @@
 ﻿using CAGD.Controls.Common;
 using CAGD.Controls.Controls3D;
-using CAGD.Controls.Controls3D.Iteractions;
 using UnityEngine;
 
 namespace CAGD
@@ -12,7 +11,6 @@ namespace CAGD
         protected U geometryManager;
         [SerializeField]
         private BezierScene3D scene;
-        private IteractivePointsHandler iteractivePointsHandler;
         private bool showControlPoints = true;
         private bool showControlLines = true;
         private bool showSurfaceLines = true;
@@ -21,7 +19,6 @@ namespace CAGD
 
         protected virtual void Start()
         {
-            this.iteractivePointsHandler = this.scene.iteractivePointsHandler;
             this.geometryManager = this.CreateGeometryManager(scene);
             this.RecalculateControlPointsGeometry();
         }
@@ -133,13 +130,13 @@ namespace CAGD
         {
             get
             {
-                return this.iteractivePointsHandler.CanMoveOnXAxis;
+                return this.scene.iteractivePointsHandler.CanMoveOnXAxis;
             }
             set
             {
-                if (this.iteractivePointsHandler.CanMoveOnXAxis != value)
+                if (this.scene.iteractivePointsHandler.CanMoveOnXAxis != value)
                 {
-                    this.iteractivePointsHandler.CanMoveOnXAxis = value;
+                    this.scene.iteractivePointsHandler.CanMoveOnXAxis = value;
                     this.OnPropertyChanged();
                 }
             }
@@ -149,13 +146,13 @@ namespace CAGD
         {
             get
             {
-                return this.iteractivePointsHandler.CanMoveOnYAxis;
+                return this.scene.iteractivePointsHandler.CanMoveOnYAxis;
             }
             set
             {
-                if (this.iteractivePointsHandler.CanMoveOnYAxis != value)
+                if (this.scene.iteractivePointsHandler.CanMoveOnYAxis != value)
                 {
-                    this.iteractivePointsHandler.CanMoveOnYAxis = value;
+                    this.scene.iteractivePointsHandler.CanMoveOnYAxis = value;
                     this.OnPropertyChanged();
                 }
             }
@@ -165,13 +162,13 @@ namespace CAGD
         {
             get
             {
-                return this.iteractivePointsHandler.CanMoveOnZAxis;
+                return this.scene.iteractivePointsHandler.CanMoveOnZAxis;
             }
             set
             {
-                if (this.iteractivePointsHandler.CanMoveOnZAxis != value)
+                if (this.scene.iteractivePointsHandler.CanMoveOnZAxis != value)
                 {
-                    this.iteractivePointsHandler.CanMoveOnZAxis = value;
+                    this.scene.iteractivePointsHandler.CanMoveOnZAxis = value;
                     this.OnPropertyChanged();
                 }
             }
