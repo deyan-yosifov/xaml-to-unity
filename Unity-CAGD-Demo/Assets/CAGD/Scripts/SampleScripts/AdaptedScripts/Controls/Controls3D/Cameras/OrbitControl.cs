@@ -129,23 +129,38 @@ namespace CAGD.Controls.Controls3D.Cameras
             this.moveDelayManager.TimeInterval = this.moveDeltaTime;
         }
 
+        //private void StartOrbit(Camera perspectiveCamera, Vector2 orbitPoint, Size viewportSize)
+        //{
+        //    Vector3 x, y, z;
+        //    CameraHelper.GetCameraLocalCoordinateVectors(perspectiveCamera.LookDirection, perspectiveCamera.UpDirection, out x, out y, out z);
+
+        //    this.firstOrbitPosition = new OrbitPositionInfo()
+        //    {
+        //        PositionOnUnityDistantPlane = CameraHelper.GetPointOnUnityDistantPlane(orbitPoint, viewportSize, perspectiveCamera.FieldOfView),
+        //        FullCircleLength = this.CalculateFullCircleLength(perspectiveCamera),
+        //        CameraX = x,
+        //        CameraY = y,
+        //        CameraZ = z,
+        //    };
+        //}
+
         //private void Orbit(Camera perspectiveCamera, Vector2 position, Size viewportSize)
         //{
-        //    Point positionOnUnityDistantPlane = CameraHelper.GetPointOnUnityDistantPlane(position, viewportSize, perspectiveCamera.FieldOfView);
-        //    Vector3 currentCameraPosition = perspectiveCamera.Position;
-        //    Vector3D currentCameraLookDirection = perspectiveCamera.LookDirection;
+        //    Vector2 positionOnUnityDistantPlane = CameraHelper.GetPointOnUnityDistantPlane(position, viewportSize, perspectiveCamera.FieldOfView);
+        //    Vector3 currentCameraPosition = perspectiveCamera.transform.position;
+        //    Vector3 currentCameraLookDirection = perspectiveCamera.transform.forward;
 
         //    this.Orbit(perspectiveCamera, positionOnUnityDistantPlane, currentCameraPosition, currentCameraLookDirection);
         //}
 
-        //private void Orbit(Vector2 positionOnUnityDistantPlane, Vector3 currentCameraPosition, Vector3 currentCameraLookDirection)
+        //private void Orbit(Camera perspectiveCamera, Vector2 positionOnUnityDistantPlane, Vector3 currentCameraPosition, Vector3 currentCameraLookDirection)
         //{
         //    Vector2 vector = positionOnUnityDistantPlane - this.firstOrbitPosition.PositionOnUnityDistantPlane;
         //    float angleInDegrees = ((vector.magnitude / this.firstOrbitPosition.FullCircleLength) * FullCircleAngleInDegrees) % FullCircleAngleInDegrees;
 
         //    if (!angleInDegrees.IsZero())
         //    {
-        //        Vector3 rotateDirection = this.firstOrbitPosition.CameraX * vector.X + this.firstOrbitPosition.CameraY * vector.Y;
+        //        Vector3 rotateDirection = this.firstOrbitPosition.CameraX * vector.x + this.firstOrbitPosition.CameraY * vector.y;
         //        Vector3 rotationAxis = Vector3.Cross(this.firstOrbitPosition.CameraZ, rotateDirection);
         //        rotationAxis.Normalize();
 
@@ -156,9 +171,9 @@ namespace CAGD.Controls.Controls3D.Cameras
 
         //        Vector3 lookAtPoint = currentCameraPosition + currentCameraLookDirection;
         //        Vector3 cameraPosition = lookAtPoint + reverseLookDirection;
-        //        double rollAngleInDegrees = OrbitControl.CalculateRollAngleOnOrbit(reverseLookDirection, currentCameraLookDirection);
+        //        float rollAngleInDegrees = OrbitControl.CalculateRollAngleOnOrbit(reverseLookDirection, currentCameraLookDirection);
 
-        //        this.Editor.Look(cameraPosition, lookAtPoint, rollAngleInDegrees);
+        //        perspectiveCamera.Look(cameraPosition, lookAtPoint, rollAngleInDegrees);
         //    }
         //}
 
@@ -182,6 +197,14 @@ namespace CAGD.Controls.Controls3D.Cameras
 
             return rollAngle;
         }
+
+        //private float CalculateFullCircleLength(Camera perspectiveCamera)
+        //{
+        //    float widthLengths = FullCircleAngleInDegrees / this.widthOrbitAngleInDegrees;
+        //    float fullCircleLength = widthLengths * CameraHelper.GetUnityDistantPlaneWidth(perspectiveCamera.FieldOfView);
+
+        //    return fullCircleLength;
+        //}
 
         private void Pan(Camera perspectiveCamera, Vector2 panPoint)
         {
@@ -210,29 +233,6 @@ namespace CAGD.Controls.Controls3D.Cameras
             Ray ray = perspectiveCamera.ScreenPointToRay(panPoint);
             this.firstPanDirection = ray.direction;
         }
-
-        //private void StartOrbit(Camera perspectiveCamera, Vector2 orbitPoint, Size viewportSize)
-        //{
-        //    Vector3 x, y, z;
-        //    CameraHelper.GetCameraLocalCoordinateVectors(perspectiveCamera.LookDirection, perspectiveCamera.UpDirection, out x, out y, out z);
-
-        //    this.firstOrbitPosition = new OrbitPositionInfo()
-        //    {
-        //        PositionOnUnityDistantPlane = CameraHelper.GetPointOnUnityDistantPlane(orbitPoint, viewportSize, perspectiveCamera.FieldOfView),
-        //        FullCircleLength = this.CalculateFullCircleLength(perspectiveCamera),
-        //        CameraX = x,
-        //        CameraY = y,
-        //        CameraZ = z,
-        //    };
-        //}
-
-        //private float CalculateFullCircleLength(Camera perspectiveCamera)
-        //{
-        //    float widthLengths = FullCircleAngleInDegrees / this.WidthOrbitAngleInDegrees;
-        //    float fullCircleLength = widthLengths * CameraHelper.GetUnityDistantPlaneWidth(perspectiveCamera.FieldOfView);
-
-        //    return fullCircleLength;
-        //}
 
         private void Zoom(Camera perspectiveCamera, Vector2 position, float zoomAmount)
         {

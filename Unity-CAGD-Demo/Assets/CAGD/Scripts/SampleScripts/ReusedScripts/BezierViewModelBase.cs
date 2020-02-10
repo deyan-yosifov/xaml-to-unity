@@ -1,10 +1,11 @@
-﻿using CAGD.Controls.Common;
+﻿using System.Collections.Generic;
+using CAGD.Controls.Common;
 using CAGD.Controls.Controls3D;
 using UnityEngine;
 
 namespace CAGD
 {
-    public abstract class BezierViewModelBase<T, U> : ViewModelBase
+    public abstract class BezierViewModelBase<T, U> : ViewModelBase, IContentProvider
         where T : BezierGeometryContextBase
         where U : BezierGeometryManagerBase<T>
     {
@@ -191,6 +192,11 @@ namespace CAGD
         protected void RecalculateSurfaceGeometry()
         {
             this.geometryManager.GenerateGeometry(this.GeometryContext);
+        }
+
+        IEnumerable<Vector3> IContentProvider.GetContentPoints()
+        {
+            return this.geometryManager.GetContentPoints();
         }
     }
 }
