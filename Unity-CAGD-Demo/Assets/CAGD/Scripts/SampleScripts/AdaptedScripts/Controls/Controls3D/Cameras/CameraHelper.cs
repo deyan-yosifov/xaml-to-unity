@@ -17,6 +17,21 @@ namespace CAGD.Controls.Controls3D.Cameras
             camera.transform.position = fromPoint;
         }
 
+        public static float GetUnityDistantPlaneWidth(Camera camera)
+        {
+            Ray centralRay = camera.ViewportPointToRay(new Vector3(0.5f, 0.5f));
+            Vector3 unityDistantRectCenter = centralRay.GetPoint(1);
+            Plane unityDistantPlane = new Plane(centralRay.direction, unityDistantRectCenter);
+
+            Ray sideRay = camera.ViewportPointToRay(new Vector2(1, 0.5f));
+            unityDistantPlane.Raycast(sideRay, out float distance);
+            Vector3 sidePoint = sideRay.GetPoint(distance);
+
+            float width = 2 * (sidePoint - unityDistantRectCenter).magnitude;
+
+            return width;
+        }
+
         public static Vector3 GetZoomToContentsCameraPosition(Camera camera, IEnumerable<Vector3> contentPoints)
         {
             if (!contentPoints.Any())
@@ -71,9 +86,20 @@ namespace CAGD.Controls.Controls3D.Cameras
             return projection;
         }
 
+        public static Vector2 GetPointOnUnityDistantPlane(Vector2 screenPoint, Camera perspectiveCamera)
+        {
+            float unityPlaneWidth = GetUnityDistantPlaneWidth(perspectiveCamera);
+            float scale = unityPlaneWidth / perspectiveCamera.pixelWidth;
+
+            Vector2 coordinateSystemCenter = new Vector2(perspectiveCamera.pixelWidth / 2, perspectiveCamera.pixelHeight / 2);
+            Vector2 transformedPoint = scale * (screenPoint - coordinateSystemCenter);
+
+            return transformedPoint;
+        }
+
         private static void CalculateViewSlopesEndMostPoints(IEnumerable<Vector3> points, Vector3 cameraPosition,
-   Vector3 leftSlopeNormal, Vector3 rightSlopeNormal, Vector3 topSlopeNormal, Vector3 bottomSlopeNormal,
-   out Vector3 leftMostPoint, out Vector3 rightMostPoint, out Vector3 topMostPoint, out Vector3 bottomMostPoint)
+            Vector3 leftSlopeNormal, Vector3 rightSlopeNormal, Vector3 topSlopeNormal, Vector3 bottomSlopeNormal,
+            out Vector3 leftMostPoint, out Vector3 rightMostPoint, out Vector3 topMostPoint, out Vector3 bottomMostPoint)
         {
             leftMostPoint = rightMostPoint = topMostPoint = bottomMostPoint = cameraPosition;
             double leftMin = double.MaxValue, rightMin = double.MaxValue, topMin = double.MaxValue, bottomMin = double.MaxValue;
@@ -110,21 +136,6 @@ namespace CAGD.Controls.Controls3D.Cameras
                     bottomMostPoint = point;
                 }
             }
-        }
-
-        private static float GetUnityDistantPlaneWidth(Camera camera)
-        {
-            Ray centralRay = camera.ViewportPointToRay(new Vector3(0.5f, 0.5f));
-            Vector3 unityDistantRectCenter = centralRay.GetPoint(1);
-            Plane unityDistantPlane = new Plane(centralRay.direction, unityDistantRectCenter);
-
-            Ray sideRay = camera.ViewportPointToRay(new Vector2(1, 0.5f));
-            unityDistantPlane.Raycast(sideRay, out float distance);
-            Vector3 sidePoint = sideRay.GetPoint(distance);
-
-            float width = 2 * (sidePoint - unityDistantRectCenter).magnitude;
-
-            return width;
         }
     }
 }
