@@ -654,6 +654,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3751726648626467581, guid: bd606ab023afbab4a97532b34395b320,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd606ab023afbab4a97532b34395b320, type: 3}
 --- !u!1001 &5589494813154354359
@@ -777,11 +782,15 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Camera
       value: 
-      objectReference: {fileID: 1164331951}
+      objectReference: {fileID: 0}
     - target: {fileID: 38943487, guid: 086da273470a93949915437f71bdedb4, type: 3}
       propertyPath: pointer
       value: 
       objectReference: {fileID: 721780488}
+    - target: {fileID: 38943487, guid: 086da273470a93949915437f71bdedb4, type: 3}
+      propertyPath: m_BlockingMask.m_Bits
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 5589494814487686458, guid: 086da273470a93949915437f71bdedb4,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -1219,6 +1228,10 @@ PrefabInstance:
       propertyPath: localAvatar
       value: 
       objectReference: {fileID: 2055805153}
+    - target: {fileID: 721780492, guid: 6684fdbc87850e54b94bbd2aa9483f91, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6684fdbc87850e54b94bbd2aa9483f91, type: 3}
 --- !u!114 &8738830636844587692 stripped

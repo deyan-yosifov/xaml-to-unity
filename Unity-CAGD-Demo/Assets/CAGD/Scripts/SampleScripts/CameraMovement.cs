@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.XR;
 
 namespace CAGD.SampleScripts
 {
@@ -12,19 +13,27 @@ namespace CAGD.SampleScripts
         [SerializeField, Range(0, 90)]
         private float rotationAngle = 30f;
         [SerializeField]
-        private bool horizontalMoveOnly = true;
+        private bool horizontalMoveOnly = false;
         private float previousRotationDirection = 0;
 
         private void Update()
         {
-            float movementAxis = Input.GetAxis("Vertical");
-            float rotationAxis = Input.GetAxis("Horizontal");
+            Vector2 axis2D = OVRInput.Get(OVRInput.Axis2D.Any);
 
-            float movedirection = (movementAxis > threshold) ? 1 : (movementAxis < -threshold ? -1 : 0);
-            Vector3 moveVector = this.horizontalMoveOnly ? new Vector3(headTransform.forward.x, 0, headTransform.forward.z) : headTransform.forward;
-            this.transform.position += Time.deltaTime * movedirection * moveVector;
+            if (axis2D.magnitude > threshold)
+            {
+                float angle = -Vector2.SignedAngle(Vector2.up, axis2D);
+                Vector3 moveVector = Quaternion.AngleAxis(angle, Vector3.up) * headTransform.forward;
+
+                if (this.horizontalMoveOnly)
+                {
+                    moveVector.y = 0;
+                }
+
+                this.transform.position += Time.deltaTime * moveVector;
+            }
             
-            float rotationDirection = (rotationAxis > threshold) ? 1 : (rotationAxis < -threshold ? -1 : 0);
+            float rotationDirection = (OVRInput.GetDown(OVRInput.Button.One | OVRInput.Button.Three)) ? 1 : (OVRInput.GetDown(OVRInput.Button.Two | OVRInput.Button.Four) ? -1 : 0);
 
             if (rotationDirection != this.previousRotationDirection)
             {

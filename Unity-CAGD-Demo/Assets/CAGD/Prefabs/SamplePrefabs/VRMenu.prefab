@@ -59,7 +59,7 @@ PrefabInstance:
     - target: {fileID: 8738830636189486698, guid: f9dedf2cd34c67743a2b0c61f81ef906,
         type: 3}
       propertyPath: m_Name
-      value: MenuCanvas
+      value: VRMenu
       objectReference: {fileID: 0}
     - target: {fileID: 8738830636189486698, guid: f9dedf2cd34c67743a2b0c61f81ef906,
         type: 3}
