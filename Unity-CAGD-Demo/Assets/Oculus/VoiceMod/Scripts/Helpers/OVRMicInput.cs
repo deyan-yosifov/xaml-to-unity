@@ -94,16 +94,17 @@ public class OVRMicInput : MonoBehaviour
 	void Start() 
 	{
 		audioSource.loop = true; 	// Set the AudioClip to loop
-		audioSource.mute = false; 	
-
-		if(Microphone.devices.Length!= 0)
+		audioSource.mute = false;
+#if !UNITY_WEBGL
+        if(Microphone.devices.Length!= 0)
 		{
 			selectedDevice = Microphone.devices[0].ToString();
 			micSelected = true;
 			GetMicCaps();
 		}
+#endif
 	}
-
+#if !UNITY_WEBGL
 	/// <summary>
 	/// Update this instance.
 	/// </summary>
@@ -153,7 +154,7 @@ public class OVRMicInput : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.M))
 			micSelected = false;
 	}
-	
+#endif
 	
 	/// <summary>
 	/// Raises the application focus event.
@@ -209,6 +210,7 @@ public class OVRMicInput : MonoBehaviour
 	/// <param name="buttonSpaceLeft">Button space left.</param>
 	public void MicDeviceGUI (float left, float top, float width, float height, float buttonSpaceTop, float buttonSpaceLeft) 
 	{
+#if !UNITY_WEBGL
 		//If there is more than one device, choose one.
 		if (Microphone.devices.Length >= 1 && GuiSelectDevice == true && micSelected == false)
 		{
@@ -225,6 +227,7 @@ public class OVRMicInput : MonoBehaviour
 				}
 			}
 		}
+#endif
 	}
 
 	/// <summary>
@@ -232,6 +235,7 @@ public class OVRMicInput : MonoBehaviour
 	/// </summary>
 	public void GetMicCaps () 
 	{
+#if !UNITY_WEBGL
 		if(micSelected == false) return;
 
 		//Gets the frequency of the device
@@ -246,6 +250,7 @@ public class OVRMicInput : MonoBehaviour
 	
 		if (micFrequency > maxFreq)
 			micFrequency = maxFreq;
+#endif
 	}
 
 	/// <summary>
@@ -253,6 +258,7 @@ public class OVRMicInput : MonoBehaviour
 	/// </summary>
 	public void StartMicrophone () 
 	{
+#if !UNITY_WEBGL
 		if(micSelected == false) return;
 			
 		//Starts recording
@@ -263,6 +269,7 @@ public class OVRMicInput : MonoBehaviour
 
 		// Play the audio source
 		audioSource.Play();
+#endif
 	}
 
 	/// <summary>
@@ -270,13 +277,15 @@ public class OVRMicInput : MonoBehaviour
 	/// </summary>
 	public void StopMicrophone () 
 	{
-		if(micSelected == false) return;
+#if !UNITY_WEBGL
+        if(micSelected == false) return;
 
 		// Overriden with a clip to play? Don't stop the audio source
 		if((audioSource != null) && (audioSource.clip != null) &&(audioSource.clip.name == "Microphone"))
 			audioSource.Stop();
 
 		Microphone.End(selectedDevice);
+#endif
 	}    
 
 

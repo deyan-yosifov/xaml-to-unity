@@ -162,6 +162,7 @@ PlayerSettings:
   applicationIdentifier:
     Android: com.devbg.CAGD
     Standalone: com.devbg.CAGD
+    WebGL: com.oculus.UnitySample
   buildNumber: {}
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 19
