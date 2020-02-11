@@ -12,7 +12,14 @@ namespace CAGD.SampleScripts
 
         private void Awake()
         {
+            QualitySettings.antiAliasing = 4;
             bool isVRPlatform = !string.IsNullOrEmpty(XRDevice.model);
+
+            if (isVRPlatform)
+            {
+                XRSettings.eyeTextureResolutionScale = 1.33f;
+                XRSettings.renderViewportScale = 1f;
+            }
 
             Transform[] platformSpecificObjects = isVRPlatform ? vrSpecificObjects : nonVRSpecificObjects;
 
